@@ -16,6 +16,12 @@ var y = 1;
 var easing = 0.05;
 //end referenced material
 
+var q = 1;
+var w = 1;
+
+var e = 1;
+var r = 1;
+
 let letter = 'z';
 
 function preload(){
@@ -37,8 +43,22 @@ function setup(){
 
 function draw(){
     if ( letter === 'a' ) {
+        if(second() < 31){
+            var bg = second();
+        } else{
+            var bg = 30 - (second() - 30);
+        }
+
+        //From https://p5js.org/reference/#/p5/lerpColor
+        let from = color(255*3/100,255*15/100,255*3/100); // Aaron Philip's birthdate: 3/15/2001
+        let to = color(255*hour()/24,255*minute()/60,255*second()/60);
+        colorMode(RGB); 
+        let interA = lerpColor(from, to, bg/30);
+        //end referenced material
+        
+        colorMode(RGB);
         //From https://p5js.org/examples/input-constrain.html
-        background(200,30,70);
+        background(interA);
 
         if (abs(mouseX - mx) > 0.1) {
             mx = mx + (mouseX - mx) * easing;
@@ -49,10 +69,8 @@ function draw(){
 
         mx = constrain(mx, inner, width - inner);
         my = constrain(my, inner, height - inner);
-        fill(200,195+minute(),70+second());
-        rect(edge, edge, width-edge, height-edge);
-        fill(255);
         //end referenced material
+
         //From https://p5js.org/examples/input-easing.html
         {
             var targetX = mouseX;
@@ -66,14 +84,6 @@ function draw(){
 
             image(img,100*x/800,100*y/800,img.width/3.3,img.height/3.3);
         }
-
-        //From https://p5js.org/reference/#/p5/lerpColor
-        colorMode(RGB);
-        let from = color(200,30,70);
-        let to = color(200,195+minute(),70+second());
-        colorMode(RGB); 
-        let interA = lerpColor(from, to, 0.33);
-        //end referenced material
 
         fill(interA);
         strokeWeight(3);
@@ -94,9 +104,24 @@ function draw(){
 
         }
         textFont('Arial',38);
+        
     } else if ( letter === 'p' ) {
+        if(second() < 31){
+            var bg = second();
+        } else{
+            var bg = 30 - (second() - 30);
+        }
+        
+        //From https://p5js.org/reference/#/p5/lerpColor
+        let from = color(255*111/100,255*120/100,255*129/100); // Pauli Murray's birthdate: 11/20/1920
+        let to = color(255*hour()/24,255*minute()/60,255*second()/60);
+        colorMode(RGB); 
+        let interA = lerpColor(from, to, bg/30);
+        //end referenced material
+        
+        colorMode(RGB);
         //From https://p5js.org/examples/input-constrain.html
-        background(180);
+        background(interA);
 
         if (abs(mouseX - mx) > 0.1) {
             mx = mx + (mouseX - mx) * easing;
@@ -107,9 +132,7 @@ function draw(){
 
         mx = constrain(mx, inner, width - inner);
         my = constrain(my, inner, height - inner);
-        fill(100,70+minute(),70+second());
-        rect(edge, edge, width-edge, height-edge);
-        fill(255);
+    
         //end referenced material
         //From https://p5js.org/examples/input-easing.html
         {
@@ -124,14 +147,6 @@ function draw(){
 
             image(pauliimg,100*x/800,100*y/800,img.width/4.5,img.height/3.2);
         }
-
-        //From https://p5js.org/reference/#/p5/lerpColor
-        colorMode(RGB);
-        let from = color(180);
-        let to = color(100,70+minute(),70+second());
-        colorMode(RGB); 
-        let interA = lerpColor(from, to, 0.5);
-        //end referenced material
 
         fill(interA);
         strokeWeight(3);
@@ -152,6 +167,7 @@ function draw(){
 
         }
         textFont('Arial',38);
+
     } else if ( letter === 'z' ) {
         background(255*(hour()/24),255*(minute()/60),255*(second()/60));
     }
