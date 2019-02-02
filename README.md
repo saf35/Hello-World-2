@@ -53,6 +53,20 @@ Curtin, Frank C. Picture of Pauli Murray smiling at camera. WUNC 91.5: North Car
 
 Iovannone, Jeffry J. "Pauli Murray: "Jane Crow"." Medium, 3 Jun. 2018. https://medium.com/queer-history-for-the-people/pauli-murray-jane-crow-6f38afaadaaf. 
 
+Pay It No Mind. "A photo of Marsha P. Johnson." Wikipedia, the Free Encyclopedia, 7 Oct. 2017, https://en.wikipedia.org/wiki/Marsha_P._Johnson. 
+
 Philip, Aaron. "girl, interrupted." Instagram, 7 Jan. 2019, https://www.instagram.com/aaron___philip/?hl=en. 
 
 Philip, Aaron. "I'm a Black, Trans, Disabled Model - And I Just Got Signed to a Major Agency." them., 4 Sept. 2018, https://www.them.us/story/aaron-philip-signed-to-modeling-agency.
+
+Unknown. A photograph of Barbara Jordan smiling and waving. GLSEN, https://www.glsen.org/blog/womens-history-month-heroes-barbara-jordan. 
+
+Unknown. A photograph of Billy Strayhorn playing a drum. Scottish National Jazz Orchestra, 18 Feb. 2015, https://snjo.co.uk/blog/composer-billy-strayhorn-in-the-limelight-at-last/. 
+
+Unknown. A photograph of Elle Hearns at a desk. Trans Justice Funding Project, 31 Mar. 2016, https://www.transjusticefundingproject.org/introducing-2016-tjfp-panelist-elle-hearns/. 
+
+Vechten, Carl Van. "Bessie Smith (April 15, 1894 – September 26, 1937), an American blues singer." Wikipedia, the Free Encyclopedia, 27 Jan. 2012, https://en.wikipedia.org/wiki/Bessie_Smith. 
+
+Vespa, Jeff. A photograph of Angela Davis smiling. Essence, 22 Oct. 2018, https://www.essence.com/news/angela-davis-to-receive-the-birmingham-civil-rights-institutes-highest-honor/.
+
+Yan, Frank. A photograph of CeCe McDonald speaking at a microphone. The Chicago Maroon, 17 Oct. 2014, https://www.chicagomaroon.com/article/2014/10/17/uncommon-interview-cece-mcdonald/. 
