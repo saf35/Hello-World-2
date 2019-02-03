@@ -202,15 +202,24 @@ function keyTyped() {
     }
 }
 
-function starFireworks(starW,starH){
+function starFireworks(starW,starH,starIS){
     constructor(){
         this.w = starW;
         this.h = starH;
+        this.inSi = starIS; // initial size
+    }
+
+    smallerSize(){
+        this.dcSi = .1*this.inSi; // decrease in size each iteration
+        this.nS = this.inSi; // new size each iteration
+        for(let a = 0; a < 10; a++){
+            
+        }
     }
 
     display(){
         // starsize = 100;
-        starWorks[i] = image(starimg,100,100,this.w,this.h);
+        starWorks[i] = image(starimg,this.inSi,this.inSi,this.w,this.h);
     }
 }
 
