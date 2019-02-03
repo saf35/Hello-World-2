@@ -47,6 +47,8 @@ I don't know if I succesfully embued any emotions in the sketch. While I was cre
 
 While reworking my sketch, I had the idea to base colors off of their lives. The background colors are based off of their birthdate and the current time, and the colors inbetween, to celebrate their lives and also show that people have an effect on the present, future, and the past, connecting these figures to the present moment because they are here today or have had a lasting effect on today.
 
+I also found an example on the reference website Matt shared. I turned it into a background animation that shows stars when you click and drag the mouse. It is not quite as animated as I would like, but I think this is a good starting point in terms of adding some happiness, wonder, and pride to the piece, since thats what stars can represent, to me.
+
 
 Bibliography
 
