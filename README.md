@@ -1,4 +1,5 @@
 Rethinking my piece:
+
 Who is the audience?
 The audience is for anyone who has access to the page. I wanted it to be relatively easily digesitble information, or at the very least, easy to look up on Google and lead to other avenues of learning. 
 

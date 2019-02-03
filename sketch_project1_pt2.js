@@ -4,8 +4,20 @@ let starimg;
 let rat;
 let imageHeight;
 let imageWidth;
-// let starsize;
+let starsize;
 let starWorks = [];
+let star1;
+// From https://p5js.org/examples/hello-p5-drawing.html
+    // All the paths
+    let paths = [];
+    // Are we painting?
+    let painting = false;
+    // How long until the next circle
+    let next = 0;
+    // Where are we now and where were we?
+    let current;
+    let previous;
+//end referenced material
 
 //From https://p5js.org/examples/input-constrain.html
 var mx = 1;
@@ -46,6 +58,12 @@ function setup(){
     rectMode(CORNERS);
     //end referenced material
 
+    // star1 = new starFireworks(100);
+
+    // From https://p5js.org/examples/hello-p5-drawing.html
+    current = createVector(0,0);
+    previous = createVector(0,0);
+    // end referenced material
 }
 
 function draw(){
@@ -68,7 +86,40 @@ function draw(){
         //From https://p5js.org/examples/input-constrain.html
         background(interA);
 
-        
+        // From https://p5js.org/examples/hello-p5-drawing.html
+            // If it's time for a new point
+            if (millis() > next && painting) {
+
+                // Grab mouse position      
+                current.x = mouseX;
+                current.y = mouseY;
+
+                // New particle's force is based on mouse movement
+                let force = p5.Vector.sub(current, previous);
+                force.mult(0.05);
+
+                // Add new particle
+                paths[paths.length - 1].add(current, force);
+                
+                // Schedule next circle
+                next = millis() + random(100);
+
+                // Store mouse values
+                previous.x = current.x;
+                previous.y = current.y;
+            }
+
+            // Draw all paths
+            for( let i = 0; i < paths.length; i++) {
+                paths[i].update();
+                paths[i].display();
+            }
+        // end of referenced material
+
+        /*
+        star1.smallerSize();
+        star1.display();
+        */
         
         // Adding easing on movement of image with mouse
         if (abs(mouseX - mx) > 0.1) {
@@ -135,6 +186,36 @@ function draw(){
         //From https://p5js.org/examples/input-constrain.html
         background(interA);
 
+        // From https://p5js.org/examples/hello-p5-drawing.html
+            // If it's time for a new point
+            if (millis() > next && painting) {
+
+                // Grab mouse position      
+                current.x = mouseX;
+                current.y = mouseY;
+
+                // New particle's force is based on mouse movement
+                let force = p5.Vector.sub(current, previous);
+                force.mult(0.05);
+
+                // Add new particle
+                paths[paths.length - 1].add(current, force);
+                
+                // Schedule next circle
+                next = millis() + random(100);
+
+                // Store mouse values
+                previous.x = current.x;
+                previous.y = current.y;
+            }
+
+            // Draw all paths
+            for( let i = 0; i < paths.length; i++) {
+                paths[i].update();
+                paths[i].display();
+            }
+        // end of referenced material
+
         if (abs(mouseX - mx) > 0.1) {
             mx = mx + (mouseX - mx) * easing;
         }
@@ -186,6 +267,36 @@ function draw(){
 
     } else if ( letter === 'z' ) {
         background(255*(hour()/24),255*(minute()/60),255*(second()/60));
+
+        // From https://p5js.org/examples/hello-p5-drawing.html
+            // If it's time for a new point
+            if (millis() > next && painting) {
+
+                // Grab mouse position      
+                current.x = mouseX;
+                current.y = mouseY;
+
+                // New particle's force is based on mouse movement
+                let force = p5.Vector.sub(current, previous);
+                force.mult(0.05);
+
+                // Add new particle
+                paths[paths.length - 1].add(current, force);
+                
+                // Schedule next circle
+                next = millis() + random(100);
+
+                // Store mouse values
+                previous.x = current.x;
+                previous.y = current.y;
+            }
+
+            // Draw all paths
+            for( let i = 0; i < paths.length; i++) {
+                paths[i].update();
+                paths[i].display();
+            }
+        // end of referenced material
     }
     
 }
@@ -202,36 +313,105 @@ function keyTyped() {
     }
 }
 
-function starFireworks(starW,starH,starIS){
-    constructor(){
-        this.w = starW;
-        this.h = starH;
+/*
+class starFireworks {
+    constructor(starIS){
         this.inSi = starIS; // initial size
     }
 
-    smallerSize(){
-        this.dcSi = .1*this.inSi; // decrease in size each iteration
+    transp(){ // Make transparent
+        this.dcSi = .0001*this.inSi; // decrease in size each iteration
         this.nS = this.inSi; // new size each iteration
-        for(let a = 0; a < 10; a++){
-            
+        for(let a = 0; a < 10000; a++){
+            this.nS = this.nS - this.dcSi;
         }
     }
 
     display(){
-        // starsize = 100;
-        starWorks[i] = image(starimg,this.inSi,this.inSi,this.w,this.h);
+        starWorks = image(starimg,random()*windowWidth,random()*windowHeight,this.inSi,this.inSi);
     }
 }
+*/
 
-// Setting fireworks-like animation behind illustration and text
-for(let i=0; i < 20; i++){ // random placement of stars
-    
-    starpc = 0.1*starsize; // 10% of starsize
-    for( let j = 0; j < 10; j++){ // decreasing size of stars
-        starWorks[i] = image(starimg,starsize,starsize,windowWidth*random(),windowHeight*random());
-        starsize = starsize - starpc;
+// From https://p5js.org/examples/hello-p5-drawing.html
+    // Start it up
+    function mousePressed() {
+    next = 0;
+    painting = true;
+    previous.x = mouseX;
+    previous.y = mouseY;
+    paths.push(new Path());
     }
-    if(i===19){
-        i = 0;
+
+    // Stop
+    function mouseReleased() {
+    painting = false;
     }
-}
+
+    // A Path is a list of particles
+    class Path {
+        constructor() {
+            this.particles = [];
+            this.hue = random(100);
+        }
+
+        add(position, force) {
+            // Add a new particle with a position, force, and hue
+            this.particles.push(new Particle(position, force, this.hue));
+        }
+        
+        // Display plath
+        update() {  
+            for (let i = 0; i < this.particles.length; i++) {
+            this.particles[i].update();
+            }
+        }  
+        
+        // Display plath
+        display() {    
+            // Loop through backwards
+            for (let i = this.particles.length - 1; i >= 0; i--) {
+            // If we shold remove it
+            if (this.particles[i].lifespan <= 0) {
+                this.particles.splice(i, 1);
+            // Otherwise, display it
+            } else {
+                this.particles[i].display(this.particles[i+1]);
+            }
+            }
+        
+        }  
+    }
+
+    // Particles along the path
+    class Particle {
+        constructor(position, force, hue) {
+            this.position = createVector(position.x, position.y);
+            this.velocity = createVector(force.x, force.y);
+            this.drag = 0.95;
+            this.lifespan = 255;
+        }
+
+        update() {
+            // Move it
+            this.position.add(this.velocity);
+            // Slow it down
+            this.velocity.mult(this.drag);
+            // Fade it out
+            this.lifespan--;
+        }
+
+        // Draw particle and connect it with a line
+        // Draw a line to another
+        display(other) {
+            stroke(0, this.lifespan/2);
+            fill(0, this.lifespan/2);    
+            image(starimg,this.position.x,this.position.y,50,50);    
+            // If we need to draw a line
+            if (other) {
+                line(this.position.x, this.position.y, other.position.x, other.position.y);
+            }
+        }
+    }
+// end referenced material
+
