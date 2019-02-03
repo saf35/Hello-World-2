@@ -42,15 +42,16 @@ function setup(){
 }
 
 function draw(){
-    if ( letter === 'a' ) {
-        if(second() < 31){
+    if ( letter === 'a' ) { // Display Aaron Philip page
+        if(second() < 31){ // Acceleration of color change depends on time (sec)
             var bg = second();
         } else{
             var bg = 30 - (second() - 30);
         }
 
+        // Setting changing color
         //From https://p5js.org/reference/#/p5/lerpColor
-        let from = color(255*3/100,255*15/100,255*3/100); // Aaron Philip's birthdate: 3/15/2001
+        let from = color(255*3/100,255*15/100,255*3/100); // Based on Aaron Philip's birthdate: 3/15/2001
         let to = color(255*hour()/24,255*minute()/60,255*second()/60);
         colorMode(RGB); 
         let interA = lerpColor(from, to, bg/30);
@@ -60,6 +61,10 @@ function draw(){
         //From https://p5js.org/examples/input-constrain.html
         background(interA);
 
+        // Setting fireworks-like animation behind illustration and text
+
+        
+        // Adding easing on movement of image with mouse
         if (abs(mouseX - mx) > 0.1) {
             mx = mx + (mouseX - mx) * easing;
         }
@@ -85,6 +90,7 @@ function draw(){
             image(img,100*x/800,100*y/800,img.width/3.3,img.height/3.3);
         }
 
+        // Adding same properties to text
         fill(interA);
         strokeWeight(3);
         stroke(230);
