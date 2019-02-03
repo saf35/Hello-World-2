@@ -4,7 +4,7 @@ let starimg;
 let rat;
 let imageHeight;
 let imageWidth;
-let starsize;
+// let starsize;
 let starWorks = [];
 
 //From https://p5js.org/examples/input-constrain.html
@@ -68,18 +68,7 @@ function draw(){
         //From https://p5js.org/examples/input-constrain.html
         background(interA);
 
-        // Setting fireworks-like animation behind illustration and text
-        for(let i=0; i < 20; i++){ // random placement of stars
-            starsize = 100; // initial size of star image
-            starpc = 0.1*starsize; // 10% of starsize
-            for( let j = 0; j < 10; j++){ // spinning and decreasing size of stars
-                starWorks[i] = image(starimg,starsize,starsize,windowWidth*random(),windowHeight*random());
-                starsize = starsize - starpc;
-            }
-            if(i===19){
-                i = 0;
-            }
-        }
+        
         
         // Adding easing on movement of image with mouse
         if (abs(mouseX - mx) > 0.1) {
@@ -210,5 +199,30 @@ function keyTyped() {
         letter = 'p';
     } else if ( key === 'z' ) {
         letter = 'z';
+    }
+}
+
+function starFireworks(starW,starH){
+    constructor(){
+        this.w = starW;
+        this.h = starH;
+    }
+
+    display(){
+        // starsize = 100;
+        starWorks[i] = image(starimg,100,100,this.w,this.h);
+    }
+}
+
+// Setting fireworks-like animation behind illustration and text
+for(let i=0; i < 20; i++){ // random placement of stars
+    
+    starpc = 0.1*starsize; // 10% of starsize
+    for( let j = 0; j < 10; j++){ // decreasing size of stars
+        starWorks[i] = image(starimg,starsize,starsize,windowWidth*random(),windowHeight*random());
+        starsize = starsize - starpc;
+    }
+    if(i===19){
+        i = 0;
     }
 }
