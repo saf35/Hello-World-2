@@ -1,5 +1,9 @@
 let img;
 let pauliimg;
+let starimg;
+let rat;
+let imageHeight;
+let imageWidth;
 
 //From https://p5js.org/examples/input-constrain.html
 var mx = 1;
@@ -27,11 +31,12 @@ let letter = 'z';
 function preload(){
     img = loadImage('images/aaronphilip.png');
     pauliimg = loadImage('images/paulimurrayillus.PNG');
+    starimg = loadImage('images/star.png');
 }
 
 function setup(){
     
-    createCanvas(1200, 600);
+    createCanvas(windowWidth, windowHeight);
     background(255*(random()*hour()/24),255*(random()*minute()/60),255*(random()*second()/60));
     //From https://p5js.org/examples/input-constrain.html
     noStroke(); 
@@ -62,7 +67,7 @@ function draw(){
         background(interA);
 
         // Setting fireworks-like animation behind illustration and text
-
+        image(starimg,);
         
         // Adding easing on movement of image with mouse
         if (abs(mouseX - mx) > 0.1) {
@@ -87,7 +92,7 @@ function draw(){
             y += dy * easing;
             //end referenced material
 
-            image(img,100*x/800,100*y/800,img.width/3.3,img.height/3.3);
+            image(img,100*x/800,100*y/800,img.width/2.8,img.height/2.8);
         }
 
         // Adding same properties to text
@@ -151,7 +156,11 @@ function draw(){
             y += dy * easing;
             //end referenced material
 
-            image(pauliimg,100*x/800,100*y/800,img.width/4.5,img.height/3.2);
+            rat = 4.5/3.2; // ratio between image height and width
+            imageHeight = 2.8; 
+            imageWidth = imageHeight*rat;
+
+            image(pauliimg,100*x/800,100*y/800,img.width/imageWidth,img.height/imageHeight);
         }
 
         fill(interA);
@@ -169,7 +178,7 @@ function draw(){
             //end referenced material
 
             text('My classmates may recognize Pauli Murray from the many murals of her around Durham. She exemplified intersectionality, fighting against racism, misogyny, and homophobia. She questioned and challenged gender years before the discourse surrounding it today. I wanted to highlight Pauli because she is incredibly inspirational, and we should definitely learn from her example.',
-            400+(-50*x/800),100+(-50*y/800),790);
+            400+(-50*x/800),100+(-50*y/800),900);
 
         }
         textFont('Arial',38);
